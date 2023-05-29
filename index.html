@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>写真ゲーム</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__logo"></div>
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item"><a href="#">TOP</a></li>
+          <li class="header__nav-item"><a href="about.html">ABOUT</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="game">
+      <h1>本物の作品を選んでください</h1>
+      <p id="message"></p>
+      <div id="images" class="grid-container"></div>
+      <div id="success-animation" style="display: none;">
+        <h1 id="result-message">正解です！</h1>
+        <div id="answer-details">
+          <img id="answer-image" src="" alt="Answer">
+          <p id="answer-title"></p>
+          <p id="answer-author"></p>
+        </div>
+        <button id="next-button" style="display: none;" onclick="nextQuestion()">次へ</button>
+      </div>
+      <div id="failure-screen" style="display: none;">
+        <h1 id="failure-message">失敗</h1>
+        <div id="answer-details2">
+          <img id="answer-image2" src="" alt="Answer">
+          <p id="answer-title2"></p>
+          <p id="answer-author2"></p>
+        </div>
+        <button id="next-button2" style="display: none;" onclick="nextQuestion()">次へ</button>
+      </div>       
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
