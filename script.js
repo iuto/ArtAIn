@@ -164,6 +164,18 @@ const quizData = [
   },
 ];
 
+const scoreImage = [
+  "images/score01.webp",
+  "images/score02.webp",
+  "images/score03.webp",
+  "images/score05.webp",
+  "images/score06.webp",
+  "images/score07.webp",
+  "images/score08.webp",
+  "images/score09.webp",
+  "images/score10.webp",
+];
+
 const correctAnswers = [
   0, // 1つ目の問題の正解のインデックス
   3, // 2つ目の問題の正解のインデックス
@@ -202,15 +214,50 @@ function endGame() {
   const imagesContainer = document.getElementById("images");
   const successAnimation = document.getElementById("success-animation");
   const failureScreen = document.getElementById("failure-screen");
-  const h1 = document.querySelector("h1");
+  const h1 = document.getElementById("game-title");
+
   imagesContainer.style.display = "none";
   successAnimation.style.display = "none";
   failureScreen.style.display = "none";
   h1.style.display = "block";
   h1.innerHTML = `ゲーム終了！<br>あなたのスコアは ${score} / ${images.length} です！`;
 
-  const retryButton = document.getElementById("retry-button");
-  retryButton.style.display = "block";
+  // スコアに応じた写真を追加する
+  const scoreImages = document.createElement("div");
+  scoreImages.classList.add("score-images");
+
+  const image = document.createElement("img");
+  if (score === 0) {
+    image.src = "images/score00.webp";
+  } else {
+    const scoreImageIndex = score - 1;
+    if (scoreImageIndex < scoreImage.length) {
+      image.src = scoreImage[scoreImageIndex];
+    } else {
+      image.src = scoreImage[scoreImage.length - 1];
+    }
+  }
+  image.alt = `Score ${score}`;
+  image.classList.add("no-hover");
+  scoreImages.appendChild(image);
+
+  h1.appendChild(scoreImages);
+
+  const link = document.createElement("a");
+  const tweetText = `私のスコアは ${score} / ${images.length} です！名画とAIで生成した画像を当てるゲーム「ArtAIn」 https://artain.app 作成者：@iuto_025`; // スコアに応じたテキストを作成
+  const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+    tweetText
+  )}`; // ツイートのURLを作成
+  link.href = tweetUrl;
+  link.textContent = "Twitterでつぶやく";
+
+  const twitterIcon = document.createElement("img");
+  twitterIcon.src = "images/twitter.webp";
+  twitterIcon.alt = "Twitter";
+  link.insertBefore(twitterIcon, link.firstChild);
+
+  h1.appendChild(link);
+  link.classList.add("twitter-button");
 }
 
 function displayFailureScreen() {
@@ -296,10 +343,23 @@ function nextQuestion() {
     nextButton.style.display = "none";
 
     const retryButton = document.getElementById("retry-button");
+    if (!imagesContainer || !successAnimation || !failureScreen || !h1) {
+      console.error("必要な要素が見つかりません。");
+      return;
+    }
+    
     retryButton.style.display = "none";
   } else {
     endGame();
   }
+}
+
+const nextButton = document.getElementById("next-button");
+console.log(nextButton); // ボタン要素が正しく取得できているか確認するためにログ出力
+
+// ボタン要素が正しく取得できている場合、クリックイベントが正しく設定されているか確認するためにログ出力
+if (nextButton) {
+  console.log(nextButton.onclick);
 }
 
 displayImages();

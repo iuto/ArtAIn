@@ -1,29 +1,53 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <meta property="og:title" content="ArtAIn">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="images/ogp.">
+  <meta property="og:image" content="https://artain.app/images/ogp.png">
+  <meta property="og:site_name" content="ArtAIn">
+  <meta property="og:description" content="世界の名画とAIで生成した画像を当てるゲームです。">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>このサイトについて</title>
+  <title>ArtAIn</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="about.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 style=%22dominant-baseline:central;text-anchor:middle;font-size:90px;%22>🖼️</text></svg>">
 </head>
 <body>
   <header class="header">
     <div class="header__logo"></div>
     <nav class="header__nav">
       <ul class="header__nav-list">
-        <li class="header__nav-item"><a href="index.html">TOP</a></li>
-        <li class="header__nav-item"><a href="about.html">ABOUT</a></li>
+        <li class="header__nav-item">
+          <a href="start.html">
+            <i class="fas fa-gamepad"></i>
+            START
+          </a>
+        </li>
+        <li class="header__nav-item">
+          <a href="list.html">
+            <i class="fas fa-palette"></i>
+            LIST
+          </a>
+        </li>
       </ul>
     </nav>
   </header>
   
   <div id="about">
-    <h1>このサイトについて</h1>
+    <h1>ArtAInについて</h1>
     <div class="container">
-      <img src="images/about.png">
+      <a href="https://zenn.dev/iuto/articles/b9d80b7820aa91">
+        <img src="images/zenn.webp">
+      </a>
       <div class="self">
-        <p>世界の名画とAI生成したものを見分けるゲームです。</p>
+        <p>
+          Art・AI・Infer（推測）という3つのキーワードから成り立っており、人工知能が生成した美術作品を推測することを表しています。<br><br>
+          <button class="start-button" onclick="window.open('https://iuto.work', '_blank')">運営者について</button>
+        </p>
+        <br>
       </div>
     </div>
 </body>
